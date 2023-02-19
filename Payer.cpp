@@ -14,6 +14,7 @@ Payer::Payer(string name, int point, string stamp) {
     time = stamp.substr(index);
 }
 
+//returns the newest transaction
 bool Payer::operator>(Payer rhs) {
     if(this->date > rhs.getDate()) return true;
     if(this->date == rhs.getDate() && this->time > rhs.getTime()) return true;

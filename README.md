@@ -15,4 +15,4 @@ Assumptions:
 
 The input file will match the formating of the example exactly.
 
-If a negative transaction is made, then those points were removed from the first non-zero transaction made by the same payer.
+If a negative transaction is made, then those points were removed from the first positve transaction made by the same payer.
