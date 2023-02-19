@@ -1,25 +1,23 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 
 #include "Payer.hpp"
 
 using namespace std;
 
-Payer::Payer(ifstream transaction) {
-    string temp;
-    transaction >> temp;
-    payer = temp;
+Payer::Payer(string name, int point, string stamp) {
+    payer = name;
 
-    int point;
-    transcation >> point;
     points = point;
+    
+    int index = stamp.find('T');
 
-    transaction >> temp;
-    int index = temp.find('T');
+    date = stamp.substr(0,index);
+    time = stamp.substr(index);
+}
 
-    date = temp.substr(0,index);
-    time = temp.substr(index);
+bool Payer::operator>(Payer rhs) {
+    if(this->date > rhs.getDate()) return true;
+    if(this->date == rhs.getDate() && this->time > rhs.getTime()) return true;
+    return false;
 }
 
 string Payer::getPayer() {
@@ -36,4 +34,12 @@ string Payer::getDate() {
 
 string Payer::getTime() {
     return time;
+}
+
+void Payer::setPoints(int new_points) {
+    points = new_points;
+}
+
+void Payer::addPoints(int new_points) {
+    this->points += new_points;
 }

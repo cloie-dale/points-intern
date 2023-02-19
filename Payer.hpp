@@ -2,16 +2,25 @@
 #define PAYER_HPP
 
 #include <string>
-#include <fstream>
 
+using namespace std;
 
 class Payer {
     public:
-        Payer(ifstream);
+        Payer(string name, int point, string stamp);
+        Payer() {
+            payer = "";
+            points = 0;
+            date = "";
+            time = "";
+        }
+        bool operator>(Payer rhs);
         string getPayer();
         int getPoints();
         string getDate();
         string getTime();
+        void setPoints(int new_points);
+        void addPoints(int new_points);
 
     private:
         string payer;
